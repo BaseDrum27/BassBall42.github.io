@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+  <title> Die Rolls Count</title>
+  <script type="text/javascript" src="../js/random.js"></script>
+  <script type="text/javascript">
+    function rollDice() {
+        var die1, die2;
+          die1 = randomInt(1, 6);
+          die2 = randomInt(1, 6);
+          imgName1='../assets/images/die' + die1 + '.gif';
+          imgName2='../assets/images/die' + die2 + '.gif';
+          document.getElementById('dieImg1').src =imgName1;
+          document.getElementById('dieImg2').src =imgName2;
+          document.getElementById('rollSpan').innerHTML=
+            parseFloat(document.getElementById('rollSpan').innerHTML) + 1;
+              if (die1 == die2) {
+                  document.getElementById('doublesRolled').innerHTML=
+                    parseFloat(document.getElementById('doublesRolled').innerHTML) + 1;
+              }
+              if (die1 + die2 == 7) {
+                document.getElementById('sevensRolled').innerHTML=
+                    parseFloat(document.getElementById('sevensRolled').innerHTML) + 1;
+              }
+              if (die1 == 4 || die1 == 3) {
+                document.getElementById('naturalSevensRolled').innerHTML= parseFloat(document.getElementById('naturalSevensRolled').innerHTML) + 1;
+              }
+       }
+       function resetCounters() {
+          document.getElementById('rollSpan').innerHTML = 0;
+          document.getElementById('doublesRolled').innerHTML = 0;
+          document.getElementById('sevensRolled').innerHTML = 0;
+          document.getElementById('naturalSevensRolled').innerHTML = 0;
+       }
+  </script>
+</head>
+<body>
+  <div style="text-align:center">
+    <p>
+      <img id="dieImg1" alt="die image"
+          src="../assets/images/die1.gif">
+      <img id="dieImg2" alt="die image"
+          src="../assets/images/die6.gif">
+    </p>
+      <input type="button" value="Click to Roll" onclick="rollDice();">
+      <input type="button" value="Reset Counters" onclick="resetCounters()">
+   <hr>
+   <p style="text-align:center">
+     Number of rolls: <span id="rollSpan">0</span><br>
+     Number of Doubles: <span id="doublesRolled">0</span><br>
+     Number of Sevens: <span id="sevensRolled">0</span><br>
+     Number of Natural Sevens: <span id="naturalSevensRolled">0</span>
+   </p>
+  </div>
+ </body>
+</html>
